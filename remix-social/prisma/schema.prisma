@@ -18,4 +18,17 @@ model Post {
   updatedAt  DateTime @updatedAt
   title String?
   body String
+  author     User    @relation(fields: [authorId], references: [id])
+  authorId   String
+}
+
+model User {
+  id             String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  name           String?
+  email          String   @unique
+  hashedPassword String
+  role           String   @default("USER")
+  posts          Post[]
 }
