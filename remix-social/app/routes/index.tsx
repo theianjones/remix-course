@@ -58,7 +58,8 @@ export default function Index() {
   const {posts} = useLoaderData<LoaderData>()
   const formData = useActionData<ActionData>()
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="m-8 flex flex-col items-center gap-8">
+      <h1 className="text-xl">Remix Social</h1>
       <PostForm
         action="/?index"
         error={formData?.error}
