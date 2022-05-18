@@ -1,4 +1,3 @@
-import {Button} from '../Button'
 import type {Props} from './types'
 
 function PostForm({error, fields, method = 'post', ...props}: Props) {
@@ -14,8 +13,8 @@ function PostForm({error, fields, method = 'post', ...props}: Props) {
           name="title"
           placeholder="Title of your post"
         />
-        {error?.fieldErrors?.title && (
-          <p className="text-red-500">{error.fieldErrors.title}</p>
+        {false && error?.fieldErrors?.title && (
+          <p className="text-red-500">{error?.fieldErrors?.title}</p>
         )}
       </div>
       <div className="mb-4 flex flex-col">
@@ -28,12 +27,17 @@ function PostForm({error, fields, method = 'post', ...props}: Props) {
           name="body"
           placeholder="Write something amazing"
         />
-        {error?.fieldErrors?.body && (
-          <p className="text-red-500">{error.fieldErrors.body}</p>
+        {false && error?.fieldErrors?.body && (
+          <p className="text-red-500">{error?.fieldErrors?.body}</p>
         )}
       </div>
       {error?.formError && <p className="text-red-500">{error.formError}</p>}
-      <Button type="submit">Create Post</Button>
+      <button
+        type="submit"
+        className="transition rounded text-blue-700 font-bold py-4 px-6 transparent hover:bg-gray-100"
+      >
+        Create Post
+      </button>
     </form>
   )
 }
