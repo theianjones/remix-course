@@ -14,7 +14,7 @@ function UserForm({error, fields, method = 'post', ...props}: Props) {
           defaultValue={fields?.email}
           type="email"
           name="email"
-          className="p-4"
+          className="p-4 border border-gray-200 rounded"
           autoComplete="user-name"
           required
         />
@@ -30,7 +30,7 @@ function UserForm({error, fields, method = 'post', ...props}: Props) {
           defaultValue={fields?.password}
           type="password"
           name="password"
-          className="p-4"
+          className="p-4 border border-gray-200 rounded"
           autoComplete="current-password"
           required
         />
