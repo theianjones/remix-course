@@ -5,6 +5,7 @@ import {createPost, getPosts} from '~/services/posts.server'
 import {Post as PostComponent} from '~/components/Post'
 import {PostForm} from '~/components/PostForm'
 import {CreatePost} from '~/services/validations'
+import {authenticator} from '~/services/auth.server'
 
 type LoaderData = {
   posts: Awaited<ReturnType<typeof getPosts>>
@@ -52,7 +53,8 @@ export const action: ActionFunction = async ({request}) => {
   return redirect('/')
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({request}) => {
+  await authenticator.isAuthenticated(request, {failureRedirect: '/login'})
   const data: LoaderData = {posts: await getPosts()}
   return json(data)
 }

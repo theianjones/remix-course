@@ -8,6 +8,11 @@ export const Signup = z.object({
   password,
 })
 
+export const Login = z.object({
+  email,
+  password,
+})
+
 export const CreatePost = z.object({
   title: z.string().optional(),
   body: z.string().min(1),
